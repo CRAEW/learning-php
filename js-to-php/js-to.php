@@ -64,7 +64,23 @@ function loopWhile() {
 // Exercise 3: String manipulation - cookies and printing
 // ======================================================
 function createUsername($name) {
-  echo $name;
+  echo "<p>";
+
+  $collection = str_split($name);
+
+  for ($i = 0; $i <= count($collection); $i++) {
+    addRandomColorSpan($collection[$i]);
+  };
+
+  echo "</p>";
+}
+
+function addRandomColorSpan($char) {
+  $r = mt_rand(0, 255);
+  $g = mt_rand(0, 255);
+  $b = mt_rand(0, 255);
+
+  echo "<span style='color:rgb($r,$g,$b);'>$char</span>";
 }
 
 

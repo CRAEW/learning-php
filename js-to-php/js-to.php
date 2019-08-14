@@ -7,20 +7,21 @@ $pictures = array(
     "https://wallpaperaccess.com/full/190815.jpg",
     "https://images7.alphacoders.com/528/528418.jpg",
     "https://wallpaperaccess.com/full/300068.jpg",
-    "https://www.hdwallpaper.nu/wp-content/uploads/2016/02/golden-gate_wallpaper_030.jpg"
+    "https://www.hdwallpaper.nu/wp-content/uploads/2016/02/golden-gate_wallpaper_030.jpg",
+    "https://pixabay.com/get/57e0dd4b4b56ad14f6d1867dda6d337b173ad8e1514c704c732a7cd29e4ecd5e/lights-1088141_1920.jpg"
 );
 
 // Variable array with random name strings
 $strings = array(
-  "Kirito",
-  "Erza",
-  "Akatsuki",
-  "Shiro",
-  "Leo",
-  "Rundel-Haus-Code",
-  "Ken Kaneki",
-  "Glenn Radars",
-  "Momonga-Sama"
+  "Kiwi",
+  "Appel",
+  "Ananas",
+  "Banaan",
+  "Mango",
+  "Jackfruit",
+  "Passion fruit",
+  "Watermeloen",
+  "Sinaasappel"
 );
 
 // Executables
@@ -50,7 +51,7 @@ function loopWhile() {
   // Loop through $strings array and create random li as long as there are values in the $arr_tracker array
   while(count($arr_tracker) > 0) {
     $randomString = $strings[mt_rand(0, count($strings) - 1)];
-    echo "<li>Menu Item $randomString </li>";
+    echo "<li>$randomString</li>";
 
     // Searches the random value in the array and deletes it
     if (($key = array_search($randomString, $arr_tracker)) !== false) {

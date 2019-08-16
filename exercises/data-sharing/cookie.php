@@ -16,11 +16,11 @@
 
     <?php
 
-    if(!isset($_COOKIE['message'])) {
-      echo "Cookie named " . $_COOKIE['message'] . " is not set!";
-    } else {
-      echo "Cookie " . $_COOKIE['message'] . " is set! <br>";
+    if(isset($_COOKIE)) {
+      echo "Cookie is set! <br>";
       echo "The message is: " . $_COOKIE['message'];
+    } else {
+      echo "Cookie named " . $_COOKIE['message'] . " is not set!";
     }
 
      ?>
@@ -28,14 +28,15 @@
 
 
     <script>
-
-    let cookieBtn = document.getElementById('cookieform');
+    let cookieBtn = document.getElementById('cookieBtn');
     cookieBtn.addEventListener('click', setCookie);
 
-      function setCookie("message", cvalue) {
-        cvalue = document.getElementById('message').value;
-        document.cookie = "message" + escape(cvalue) + ";";
-      }
+    function setCookie() {
+      let cookietxt = document.getElementById('message').value;
+      document.cookie = "message=" +  encodeURIComponent(`${cookietxt}`);
+    }
+
+
 
 
     </script>

@@ -33,7 +33,11 @@
 
     function setCookie() {
       let cookietxt = document.getElementById('message').value;
-      document.cookie = "message=" +  encodeURIComponent(`${cookietxt}`);
+      var d = new Date();
+      // time = days x hours x minutes x seconds x 1000
+      d.setTime(d.getTime() + (0.5*24*60*60*1000));
+      var expires = "expires=" + d.toGMTString();
+      document.cookie = "message=" +  encodeURIComponent(`${cookietxt}`) + ";" + expires;
     }
 
 

@@ -10,3 +10,12 @@
 
 ## Programming steps
 1. Create card deck
+2. Create class Blackjack (constructor)
+3. Create players from Blackjack class
+
+
+
+HTML knoppen:
+* hit = draw new card
+* stand = skip turn
+* surrender = you lost

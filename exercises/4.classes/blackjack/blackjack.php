@@ -30,11 +30,11 @@ foreach($suits as $suit) {
 
 echo $deck["club 7"];
 
-// class Blackjack {
+class Blackjack {
 
 
 
-// }
+}
 
 
 

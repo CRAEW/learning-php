@@ -91,10 +91,14 @@
     * End session
     * reset all to zero
 
+* F - Game log
+ * displays game log in html
+
 ## ROLVERDELING
 
 ### Mago
 * Play Game F
+* Game log F
 
 ## Caro
 * Classe Blackjack

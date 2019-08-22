@@ -15,7 +15,7 @@
 
 
 
-HTML knoppen:
+### HTML knoppen:
 * hit = draw new card
 * stand = skip turn
 * surrender = you lost

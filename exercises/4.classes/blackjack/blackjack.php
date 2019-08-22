@@ -43,9 +43,11 @@ foreach($suits as $suit) {
 
 // Constructor to create the players
 class Blackjack {
-
+    
     public function hit() {
         echo "new cards please";
+        global $deck;
+        
     }
 
     public function stand() {

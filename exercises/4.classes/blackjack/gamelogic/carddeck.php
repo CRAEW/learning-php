@@ -1,5 +1,4 @@
-<?php 
-
+<?php
 # CREATE THE CARDS DECK
 
 // Array in which the cards and values will be stored
@@ -32,37 +31,10 @@ foreach($suits as $suit) {
     foreach($cardvalues as $cardname => $cardvalue) {
 
         // This concatenates $suit-value and $cardname-key
-        $card = $suit . " " . $cardname;
+        $card = $suit . "-" . $cardname;
         // Add the created card-key and cardvalue to the deck-array
         $deck[$card] = $cardvalue;
     }
 }
-
-
-# BLACKJACK PLAYERS
-
-// Constructor to create the players
-class Blackjack {
-    
-    public function hit() {
-        echo "new cards please";
-        global $deck;
-        
-    }
-
-    public function stand() {
-        echo "no card for me, I skip this one";
-    }
-
-    public function surrender() {
-        echo "whoops I lost";
-    }
-
-}
-
-$player1 = new Blackjack;
-$dealer = new Blackjack;
-
-echo $player1->hit();
 
 ?>

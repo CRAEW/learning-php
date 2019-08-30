@@ -31,16 +31,86 @@
 * ACE + 10 = 11 of 21
 * J-K-Q = 10
 
-# Break game into blocks
+# STAPPENPLAN
 
-## Front-end
+## BACK-END
 
-* HTML
-* CSS
+### 1. BOEK KAARTEN
+* A - CARDVALUES
+* A - SUITS
+* FOREACH LOOP MAAKT A - DECK AAN
 
-## Back-end
+### 2. VARIABLE VOOR SCORE
+* SCORE = TOTAAL ALLE KAARTEN
+* VAR SUBTOTAAL = EXTRA KAARTEN VAN HIT (NIET IN HTML)
+
+### 3. ARRAY OM GESPEELDE KAARTEN IN OP TE SLAGEN
+
+### 4. HIT
+* RANDOM KAARTEN TREKKEN
+* WAARDE VAN KAART BEPALEN
+* KAARTEN OPTELLEN
+* SCORE AANPASSEN
+* KAART OPSLAGEN IN ARRAY
+
+### 5. MAX. SCORE = 21
+* CHECK SCORE ARRAY
+
+### 5. ACE = 11 OF 1
+* ALS 11 TEVEEL DAN 1
+* DIE WAARDE GAAT SCORE AANPASSEN
+* BIJ ELKE HIT OPNIEUW CHECKEN
+* ALS 2X ACE = 1X1 EN 1X11(DEFAULT) OF 2X1 (CHECK ARRAY)
+
+### 6. ALS 21 = GEWONNEN
+* SPEL VERGRENDELT
+* ALLEEN NOG NEW GAME OF NEW ROUD OF EXIT GAME MOGELIJK
+
+### 7. CLASS BLACKJACK
+
+### 8. HIT-STAND-SURRENDER IN CLASSE
+
+### 9. SPELERS AANMAKEN
+
+### 10. ELKE SPELER 2 KAARTEN
+* SCORE AANPASSEN
+* EIGEN SCORE ZICHTBAAR
+
+### 10. VERGELIJK SCORE VAN SPELER EN DEALER
+
+### 11. CHECK WIE GEWONNEN HEEFT (ZIE STAP 6)
+
+### 12. SPEEL SPEL
+* HIT OF STAND OF SURRENDER
+* CHECK SCORE
+* STAND -> DEALER TURN
+
+### 12. DEALER PLAYS
+
+
+----------------------
+
+## FUNCTIONS
 
 * A - boek kaarten array if NEW GAME
+
+
+* F - Check winner
+    * check winner if 21 elke keer er gedealed wordt
+        * check score 21 = win or dealer wins if 21
+        * >21 = BUSTED        
+        * <21 HIT AGAIN or STAND
+    * If winner
+        * show show txt you won
+        * disable buttons hit-stand-surrender
+        * only new game or new round possible
+
+
+
+
+
+
+
 
 * F - start game function
     * RESET() all scores, deck, players
@@ -76,15 +146,7 @@
     * adds +1 to WINNER-score
     
 
-* F - Check winner
-    * check winner if 21 elke keer er gedealed wordt
-        * check score 21 = win or dealer wins if 21
-        * >21 = BUSTED        
-        * <21 HIT AGAIN or STAND
-    * If winner
-        * show show txt you won
-        * disable buttons hit-stand-surrender
-        * only new game or new round possible
+
 
 
 * F - EXIT GAME function
@@ -94,9 +156,15 @@
 * F - Game log
  * displays game log in html
 
-## ROLVERDELING
 
-### Mago
+ ## Front-end
+
+* HTML
+* CSS
+
+# ROLVERDELING
+
+## Mago
 * Play Game F
 * Game log F
 

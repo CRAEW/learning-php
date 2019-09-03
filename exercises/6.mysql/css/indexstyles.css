@@ -1,0 +1,22 @@
+table {
+  table-layout: auto;
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 18px;
+}
+table th,
+table td {
+  border-bottom: 2px solid lightseagreen;
+  height: 50px;
+  text-align: left;
+  vertical-align: middle;
+  padding: 15px;
+}
+table th {
+  background-color: darkcyan;
+  color: white;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+/*# sourceMappingURL=indexstyles.css.map */

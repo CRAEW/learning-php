@@ -1,0 +1,9 @@
+@import 'variables';
+
+.page {
+    background-color: $dark-bg;
+    color: $txt-light;
+
+    width: 100vw;
+    height: 100vh;
+}

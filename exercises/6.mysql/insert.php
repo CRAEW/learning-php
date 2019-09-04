@@ -30,12 +30,6 @@
             echo "Error: " . $sql . "<br>" . $conn->error;
         }
     }
-
-    // Perform a query, check for error
-    // if (!mysqli_query($conn,"INSERT INTO Persons (FirstName) VALUES ('Glenn')"))
-    // {
-    // echo("Error description: " . mysqli_error($conn));
-    // }
     
     closeConnection($conn);
     
@@ -94,7 +88,7 @@
 
             <div>
                 <label for="avatar">Avatar: </label>
-                <input id ="avatar" type="file" name="avatar" required>
+                <input id ="avatar" type="url" name="avatar" required>
             </div>
 
             <div>

@@ -25,6 +25,7 @@
     echo "<table>";
     echo "<tr> 
             <th>ID</th>
+            <th>Profile</th>
             <th>First name</th>
             <th>Last name</th>
             <th>E-mail</th>
@@ -34,8 +35,12 @@
 
     while($row = $result->fetch_assoc()){
 
+        $user_id = $row['id'];
+
         echo "<tr><td>";
         echo $row['id'];
+        echo "</td><td>";
+        echo "<a href='profile.php?id=$user_id' target='_blank' rel='noreferrer'>Profile</a>";
         echo "</td><td>";
         echo $row['first_name'];
         echo "</td><td>";

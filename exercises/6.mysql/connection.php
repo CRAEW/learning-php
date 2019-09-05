@@ -3,15 +3,15 @@
 function openConnection() {
     
 //  Try to figure out what these should be for you
-//  $dbhost    = "136.144.221.129";                // Variable links to your server
-//  $dbuser    = "genk";                // Variable links to username
-//  $dbpass    = "{)+O^O@iw!].zmjT";       // Variable links to userpassword
-//  $db        = "becode_genk";                // Variable links to Database
-
- $dbhost    = "wendywebsite";                // Variable links to your server
- $dbuser    = "root";                // Variable links to username
- $dbpass    = "09wendy82";       // Variable links to userpassword
+ $dbhost    = "136.144.221.129";                // Variable links to your server
+ $dbuser    = "genk";                // Variable links to username
+ $dbpass    = "{)+O^O@iw!].zmjT";       // Variable links to userpassword
  $db        = "becode_genk";                // Variable links to Database
+
+//  $dbhost    = "wendywebsite";                // Variable links to your server
+//  $dbuser    = "root";                // Variable links to username
+//  $dbpass    = "09wendy82";       // Variable links to userpassword
+//  $db        = "becode_genk";                // Variable links to Database
 
 
  

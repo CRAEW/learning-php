@@ -5,6 +5,7 @@
 }
 
 .page {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -13,17 +14,47 @@
   min-height: 100vh;
   max-width: 100vw;
 }
+.page header {
+  margin: 3px 0;
+}
 .page main {
+  margin: 30px 0;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
+.page footer {
+  position: absolute;
+  bottom: 10px;
+}
+.page h1 {
+  display: none;
+}
+.page h2 {
+  margin: 30px 0;
+  font-size: 28.8px;
+  font-weight: 700;
+}
+.page p {
+  margin: 30px 0;
+}
 .page span {
   display: block;
+  text-align: right;
+  font-weight: 100;
 }
 .page a {
   text-decoration: none;
   color: inherit;
+}
+.page .line {
+  width: 80%;
+  height: 1px;
+  background-color: grey;
+}
+
+.quote {
+  font-size: 19.2px;
 }
 
 .img {
@@ -48,7 +79,7 @@
   border-radius: 50%;
   background-color: purple;
   text-align: center;
-  margin: 0 5px;
+  margin: 0 10px;
 }
 .contactcontainer .btn-round a {
   line-height: 50px;

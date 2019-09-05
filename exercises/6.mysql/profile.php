@@ -1,6 +1,5 @@
 <?php require 'connection.php'; ?>
 
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -48,8 +47,6 @@
             $result = $conn->query($sql) or die('error getting data');
             ?>
 
-
-
             <?php while($profile = $result->fetch_assoc()): ?>
             <main>
 
@@ -63,11 +60,15 @@
                 <img src="<?php echo $profile['avatar']; ?>" alt="profile picture <?php echo $profile['avatar']; ?>">
             </div>
 
+             <div class="blb-meme">
+                <img src="https://belikebill.ga/billgen-API.php?default=0&text=This is <?php echo $profile['first_name']?>.%0D%0A%0D%0A<?php echo $profile['first_name']?> likes a quote from <?php echo $profile['quote_author']; ?>.%0D%0A%0D%0A<?php echo $profile['quote']?>%0D%0A%0D%0A<?php echo $profile['first_name']?> is wise.%0D%0ABe like <?php echo $profile['first_name']?>." /> 
+            </div>
+            
+            
 
-            <p class="quote">
-                <?php echo $profile['quote']; ?>
-                <span><?php echo $profile['quote_author']; ?></span>
-            </p>
+            <div class="btn-rctl">
+                <a href="<?php echo $profile['video']; ?>" target="_blank" rel="noreferrer">Favorite Movie</a>
+            </div>
         </main>
 
         <!-- just a div that's a line -->
@@ -82,6 +83,10 @@
                         noreferrer"><i class="fab fa-github-alt"></i></a></div>
                 <div class="email btn-round"><a href="mailto:<?php echo $profile['email']; ?>" target="_blank rel="
                         noreferrer"><i class="fas fa-envelope"></i></a></div>
+            </div>
+
+            <div class="attributes">
+            <a href="https://www.freepik.com/free-photos-vectors/background">Background vector created by freepik - www.freepik.com</a>
             </div>
 
 

@@ -1,4 +1,9 @@
 <?php
+session_start();
+$name = isset($_SESSION['name'])?$_SESSION['name']:'Bill';
+
+# BE LIKE BILL API
+
 // cURL Setting options
 /*
 CURLOPT_RETURNTRANSFER - Return the response as a string instead of outputting it to the screen
@@ -16,7 +21,7 @@ $curl = curl_init();
 // Setting options of request - cURL resource, cURL-setting, cURL-setting-value
 curl_setopt_array($curl, [
     CURLOPT_RETURNTRANSFER => 1,
-    CURLOPT_URL => 'https://belikebill.ga/billgen-API.php?default=1&name=Wendy&sex=f',
+    CURLOPT_URL => "https://belikebill.ga/billgen-API.php?default=1&name=$name",
     CURLOPT_USERAGENT => 'BeCode Apprentice Wendy'
 ]);
 

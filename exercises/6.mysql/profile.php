@@ -1,4 +1,4 @@
-<?php require 'connection.php'; ?>
+<?php require 'php/connection.php'; ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -50,6 +50,14 @@
             <?php while($profile = $result->fetch_assoc()): ?>
             <main>
 
+            <!-- SESSION START FOR blb-api -->
+            <?php
+                session_start();
+                $_SESSION['name'] = $profile['first_name'];
+            ?>
+
+
+
             <!-- Profile page START -->
             <h2>
                 <?php echo $profile['first_name']." ".$profile['last_name']; ?>
@@ -60,8 +68,16 @@
                 <img src="<?php echo $profile['avatar']; ?>" alt="profile picture <?php echo $profile['avatar']; ?>">
             </div>
 
+            <div class="quote">
+                <p>
+                    <?PHP echo $profile['quote'] ?>
+                    <span><?PHP echo $profile['quote_author'] ?></span>
+                </p>
+            
+            </div>
+
              <div class="blb-meme">
-                <img src="https://belikebill.ga/billgen-API.php?default=0&text=This is <?php echo $profile['first_name']?>.%0D%0A%0D%0A<?php echo $profile['first_name']?> likes a quote from <?php echo $profile['quote_author']; ?>.%0D%0A%0D%0A<?php echo $profile['quote']?>%0D%0A%0D%0A<?php echo $profile['first_name']?> is wise.%0D%0ABe like <?php echo $profile['first_name']?>." /> 
+                <img src="php/blb-api.php" alt="Be Like Bill API meme" /> 
             </div>
             
             

@@ -1,4 +1,9 @@
-<?PHP
+<?php
+
+// Error handling
+ini_set('display_errors',1); error_reporting(E_ALL);
+
+
 require 'connection.php';
 
 // Open the connection to the database
@@ -21,7 +26,7 @@ if (isset($_POST)) {
     $avatar = $_POST['avatar'];
     $video = $_POST['video'];
     $quote = $_POST['quote'];
-    $author = $_POST['quote-author'];
+    $author = '';
 
     // Secure password
     $userpwd_hash = password_hash($userpwd, PASSWORD_BCRYPT);
@@ -33,15 +38,28 @@ if (isset($_POST)) {
 
     $result = $conn->query($sql);
 
+    // Select user id from database for redirect to profile page
+        $sql = "SELECT id, username FROM hopper_2 WHERE email='$email'";
+        $result = $conn->query($sql);
+
+        if($result->num_rows > 0) {
+            // output data of each row
+            while($row = $result->fetch_assoc()){
+                echo "id: ".$row["id"]." - Username: ".$row["username"]."<br>";
+            }
+        }
+
+        die(print_r($result->num_rows));
+
     // Save the records to the database
     if ($result === TRUE) {
-        echo "Registration successfully";
-        // Select user id from database for redirect to profile page
-        $query = "SELECT id FROM hopper_2 WHERE email=$email";
-        $q_result = $conn->query($query);
+        //echo "Registration successfully";
+        
+        
 
-        $profile = $query->fetch_assoc();
-        return $user_id = $profile['id'];
+        //$profile = $q_result->fetch_assoc();
+       
+        //return $user_id = $profile['id'];
 
         
 

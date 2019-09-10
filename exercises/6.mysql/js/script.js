@@ -35,19 +35,19 @@ $(function(){
                     url: './php/auth.php',
                     data: {
                         user_id: userId,
-                        first_name: firstname,
-                        last_name: lastname,
+                        firstname: firstname,
+                        lastname: lastname,
                         username: username,
                         userpwd: userpwd,
                         confirmpwd: confirmpwd,
                         linkedin: linkedin,
                         github: github,
                         email: email,
-                        preferred_language: language,
+                        language: language,
                         avatar: avatar,
                         video: video,
                         quote: quote,
-                        quote_author: author
+                        author: author
                     },
                     success: function(data){
                         Swal.fire({
@@ -62,7 +62,12 @@ $(function(){
                         })
                     },
 
-                    error: function(data){
+                    error: function(x,xx,xxx){
+                        console.log(x);
+                        console.log(xx);
+                        console.log(xxx);
+
+
                         Swal.fire({
                             'title': "Errors",
                             'text': "Your registration failed. Please try again.",

@@ -54,11 +54,7 @@ $(function(){
                             'title': "Successful",
                             'html': data,
                             'type': "success",
-                            
-                        }, function(){
-                            userId = "<?php echo $user_id ?>";
-                            // redirect
-                            location.replace(`./profile.php?username=${username}`);
+                            'showConfirmButton': false
                         })
                     },
 

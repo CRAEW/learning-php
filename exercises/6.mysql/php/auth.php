@@ -46,8 +46,11 @@ if (isset($_POST)) {
             // output data of each row
             while($row = $result->fetch_assoc()){
                 $user_id=$row["id"];
-                echo "Registration successfully! "."\r\n"."id: ".$row["id"]." - Username: ".$row["username"];
-                echo "<a href=./profile.php?id=$user_id>profile</a>";
+                echo "Registration successfully! "."\r\n"."id: ".$row["id"]." - Username: ".$row["username"]."<br>";
+                // echo "<a href=./profile.php?id=$user_id>profile</a>";
+
+
+               echo "<button type='button' class='swal2-confirm swal2-styled' aria-label='' style='display: inline-block; border-left-color: rgb(48, 133, 214); border-right-color: rgb(48, 133, 214); color=#fff; text-decoration=none;'><a href=./profile.php?id=$user_id style='text-decoration:none; color:white;'>PROFILE</a></button>";
 
                 
                 // return "let userId = $user_id";

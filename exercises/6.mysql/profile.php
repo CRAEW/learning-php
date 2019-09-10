@@ -36,6 +36,8 @@
             if(!isset($_GET['search'])) {
                 $user_id_selector=$_GET['id'];
                 $sql = "SELECT * FROM hopper_2 WHERE id=$user_id_selector";
+
+
             } elseif(isset($_GET['search'])) {
                 $search = $_GET['search'];
                 $sql = "SELECT * FROM hopper_2 WHERE id=$search";

@@ -52,7 +52,7 @@ $(function(){
                     success: function(data){
                         Swal.fire({
                             'title': "Successful",
-                            'text': data,
+                            'html': data,
                             'type': "success",
                             
                         }, function(){

@@ -45,25 +45,16 @@ if (isset($_POST)) {
         if($result->num_rows > 0) {
             // output data of each row
             while($row = $result->fetch_assoc()){
-                echo "id: ".$row["id"]." - Username: ".$row["username"]."<br>";
+                $user_id=$row["id"];
+                echo "Registration successfully! "."\r\n"."id: ".$row["id"]." - Username: ".$row["username"];
+                echo "<a href=./profile.php?id=$user_id>profile</a>";
+
+                
+                // return "let userId = $user_id";
+
+                // die(print_r($result->num_rows));
             }
-        }
-
-        die(print_r($result->num_rows));
-
-    // Save the records to the database
-    if ($result === TRUE) {
-        //echo "Registration successfully";
-        
-        
-
-        //$profile = $q_result->fetch_assoc();
-       
-        //return $user_id = $profile['id'];
-
-        
-
-    } else {
+        } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
     }
 

@@ -1,4 +1,41 @@
-<?php require 'php/connection.php'; ?>
+<?php 
+    // Error handling
+    ini_set('display_errors',1); error_reporting(E_ALL);
+
+// START SESSION VARIABLES OR RETRIEVE THEM IF SESSION IS STARTED
+session_start();
+
+// CHECK if user is logged in
+if (!(isset($_SESSION['login']) && $_SESSION['login'] != '')) {
+    echo "Please log in first.";
+}
+
+// Connect to the database
+require 'php/connection.php'; 
+$conn = openConnection();
+
+$user_id_selector=$_GET['id'];
+
+// Select data from the database
+if(!isset($_GET['search'])) {
+    $sql = "SELECT * FROM hopper_2 WHERE id=$user_id_selector";
+} elseif(isset($_GET['search'])) {
+    $search = $_GET['search'];
+    $sql = "SELECT * FROM hopper_2 WHERE id=$search";
+    header("Location: profile.php?id=$search");
+} else {
+    echo "Could not fetch data.";
+}
+
+// Save selected data in variable
+$result = $conn->query($sql) or die('error getting data');
+// Retrieve data
+$profile = $result->fetch_assoc();
+
+// SESSION START FOR blb-api
+$_SESSION['name'] = $profile['first_name'];
+
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -18,49 +55,55 @@
         <h1>Profile page</h1>
 
         <header>
+
+        <?php
+        // CHECK if profile ID is from logged in user
+        $loggedin_user = $_SESSION['user_id'];
+
+        if($loggedin_user === $user_id_selector):
+        ?>
+            <form action="" method="post">
+                <input id="delete" type="submit" value="DELETE" name="delete">
+                <input id="edit" type="submit" value="EDIT" name="edit">
+            </form>
+
+        <?php 
+            if(isset($_POST['edit']) && ($profile['user_rights'] === 'admin')) {
+                header("Location: edit.php");
+            }
+            
+            if(isset($_POST['delete']) && ($profile['user_rights'] === 'admin')) {
+                $sql = "DELETE FROM hopper_2 WHERE id='$loggedin_user'";
+                if ($conn->query($sql) === TRUE) {
+                    header("Location: index.php");
+                } else {
+                    echo "Error: " . $sql . "<br>" . $conn->error;
+                }
+            }
+
+        ?>
+
+        <?php endif; ?>
+
+
+
+        
+
+
             <!-- Search profile based on ID -->
-            <form action="" method="GET">
+            <form action="profile.php" method="GET">
                 <input type="hidden" name="submmitted" value="true">
                 <label for="search-id">Search id:
                     <input id="search-id" type="text" name="search">
                 </label>
                 <input type="submit" value="Get profile!" name="submitted">
             </form>
+            <form action="login.php">
+                <input type="submit" value="Login" name="login">
+            </form>
         </header>
 
-            <!-- connect to the database -->
-            <?PHP 
-            $conn = openConnection();
-
-            // Select data from the database
-            if(!isset($_GET['search'])) {
-                $user_id_selector=$_GET['id'];
-                $sql = "SELECT * FROM hopper_2 WHERE id=$user_id_selector";
-
-
-            } elseif(isset($_GET['search'])) {
-                $search = $_GET['search'];
-                $sql = "SELECT * FROM hopper_2 WHERE id=$search";
-            } else {
-                echo "Could not fetch data.";
-            }
-            
-            // Save selected data in variable
-            $result = $conn->query($sql) or die('error getting data');
-            ?>
-
-            <?php while($profile = $result->fetch_assoc()): ?>
-            <main>
-
-            <!-- SESSION START FOR blb-api -->
-            <?php
-                session_start();
-                $_SESSION['name'] = $profile['first_name'];
-            ?>
-
-
-
-            <!-- Profile page START -->
+            <main> <!-- Profile page START -->
             <h2>
                 <?php echo $profile['first_name']." ".$profile['last_name']; ?>
                 <span><?php echo $profile['username']; ?></span>
@@ -72,8 +115,8 @@
 
             <div class="quote">
                 <p>
-                    <?PHP echo $profile['quote'] ?>
-                    <span><?PHP echo $profile['quote_author'] ?></span>
+                    <?php echo $profile['quote'] ?>
+                    <span><?php echo $profile['quote_author'] ?></span>
                 </p>
             
             </div>
@@ -109,39 +152,6 @@
 
 
         </footer>
-        <?php endwhile; ?>
-
-
-
-        
-
-
-        <!-- 
-    `id` int(11) NOT NULL,
-    `first_name` text NOT NULL,
-    `last_name` text NOT NULL,
-    `username` text NOT NULL,
-    `password` text,
-
-    `linkedin` text NOT NULL,
-    `github` text NOT NULL,
-    `email` text NOT NULL,
-
-    `preferred_language` text NOT NULL,
-    `belikebill` text NOT NULL,
-    `avatar` text NOT NULL,
-    `video` text NOT NULL,
-
-    `quote` text NOT NULL,
-    `quote_author` text NOT NULL,
-    `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
-     -->
-
-
-
-
-
-
 
     </section>
 

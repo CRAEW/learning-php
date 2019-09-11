@@ -1,4 +1,18 @@
-<?php require 'php/connection.php';?>
+<?php 
+
+// CHECK if user is logged in
+session_start();
+
+if (!(isset($_SESSION['login']) && $_SESSION['login'] != '')) {
+
+header ("Location: login.php");
+
+}
+
+require 'php/connection.php';
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

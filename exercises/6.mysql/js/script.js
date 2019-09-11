@@ -50,12 +50,27 @@ $(function(){
                         author: author
                     },
                     success: function(data){
-                        Swal.fire({
-                            'title': "Successful",
-                            'html': data,
-                            'type': "success",
-                            'showConfirmButton': false
-                        })
+
+                        console.dir(data);
+
+                        let usernametaken = "Username already taken. Choose another username.";
+                        let emailtaken = "There's already an account with that E-mailaddress.";
+
+                        if(data == usernametaken || data == emailtaken){
+                            Swal.fire({
+                                'title': "Error",
+                                'html': data,
+                                'type': "error",
+                            });
+                        } else {
+                            Swal.fire({
+                                'title': "Successful",
+                                'html': data,
+                                'type': "success",
+                                'showConfirmButton': false
+                            });
+                        }
+
                     },
 
                     error: function(x,xx,xxx){

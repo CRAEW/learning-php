@@ -1,14 +1,46 @@
 <?php 
 
+    // Error handling
+    ini_set('display_errors',1); error_reporting(E_ALL);
+    
     require 'php/connection.php'; 
     // connect to the database
     $conn = openConnection();
-    // Select data from the database
-    $sql = "SELECT * FROM hopper_2 WHERE id=$user_id OR email=$email";
-    // Save selected data in variable
-    $result = $conn->query($sql) or die('error getting data');
 
-    $row = $result->fetch_assoc();
+    if(isset($_POST['login'])){
+        $user = $_POST['user'];
+        $userpwd = $_POST['pwd'];
+
+        // Select data from the database
+        $sql = "SELECT * FROM hopper_2 WHERE username='$user' OR email='$user'";
+        // Save selected data in variable
+        $result = $conn->query($sql) or die('error getting data');
+
+        $row = $result->fetch_assoc();
+        // Secured password
+        $hash = $row['userpwd'];
+        $userpwd_unhash = password_verify($userpwd, $hash);
+
+        if($userpwd_unhash) {
+            echo "login succeeded";
+
+            session_start();
+            $_SESSION['login'] = "login successful";
+            $_SESSION['user_id'] = $row['id'];
+
+            header("Location: index.php");
+        } else {
+            echo "username or password incorrect";
+        }
+    }
+
+    
+    // TEST
+    /*
+        user: CRAEWENDY
+        password: 1234
+    */
+
 
 ?>
 
@@ -28,11 +60,11 @@
 <h1>Log in</h1>
 
 
-<form action="" method="POST">
+<form action="login.php" method="POST">
 
     <div>
         <label for="user">Username or E-mail</label>
-        <input id="user" type="text" name="pwd">
+        <input id="user" type="text" name="user">
     </div>
 
     <div>

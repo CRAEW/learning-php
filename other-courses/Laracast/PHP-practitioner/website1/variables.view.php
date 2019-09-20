@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Variables</title>
 
     <style>
 
@@ -42,10 +42,10 @@
 
 <h3>Task for the day</h3>
     <ul>
-        <?php foreach($task as $heading => $value) : ?>
+        <?php foreach($taskarray as $heading => $value) : ?>
 
             <li>
-                <strong><?= ucwords($heading); ?></strong> <?= $value; ?>
+                <strong><?php ucwords($heading); ?></strong> <?php //$value; ?>
             </li>
 
         <?php endforeach; ?>
@@ -55,26 +55,26 @@
 
     <ul>
         <li>
-            <strong>Name: </strong><?= $task['title']; ?>
+            <strong>Name: </strong><?php $taskarray['title']; ?>
         </li>
 
         <li>
-            <strong>Due Date: </strong><?= $task['due']; ?>
+            <strong>Due Date: </strong><?php $taskarray['due']; ?>
         </li>
 
         <li>
-            <strong>Person Responsible: </strong><?= $task['assigned_to']; ?>
+            <strong>Person Responsible: </strong><?php $taskarray['assigned_to']; ?>
         </li>
 
         <li>
-            <strong>Status (ternary): </strong><?= $task['completed'] ? 'Complete': 'Incomplete'; ?>
+            <strong>Status (ternary): </strong><?php $taskarray['completed'] ? 'Complete': 'Incomplete'; ?>
         </li>
 
         <li>
             <strong>Status (conditional): </strong>
             <?php
 
-            if($task['completed'])
+            if($taskarray['completed'])
             {
                 echo '<div><span> class="icon">&#10004;</span></div>';
             } else {
@@ -86,7 +86,7 @@
 
         <li>
             <strong>Status (conditional): </strong>
-            <?php if($task['completed']) : ?>
+            <?php if($taskarray['completed']) : ?>
                 <span class="icon">&#10004;</span>
 
             <?php else : ?>
@@ -101,8 +101,26 @@
 
     <h2>Functions</h2>
 
-    <p><?php age(21) ?></p>
-    <p><?php age(18) ?></p>
+    <p><?php myAge(21); ?></p>
+    <p><?php myAge(18); ?></p>
+
+
+    <h2>Classes</h2>
+        <ul>
+
+            <?php foreach($tasklist as $taskobject) : ?>
+
+                <li>
+                    <?php if($taskobject->completed) : ?>
+                        <strike><?= $taskobject->description; ?></strike>
+                    <?php else : ?>
+                        <?= $taskobject->description; ?>
+                    <?php endif; ?>
+                </li>
+
+            <?php endforeach; ?>
+
+        </ul>
     
 </body>
 </html>

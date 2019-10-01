@@ -62,6 +62,7 @@ $_SESSION['name'] = $profile['first_name'];
 
         if($loggedin_user === $user_id_selector):
         ?>
+        
             <form action="" method="post">
                 <input id="delete" type="submit" value="DELETE" name="delete">
                 <input id="edit" type="submit" value="EDIT" name="edit">

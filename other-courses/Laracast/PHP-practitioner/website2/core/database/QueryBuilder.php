@@ -22,6 +22,4 @@ class QueryBuilder
         // Fetch results into an object (fetchAll gets the complete Db, bad practice for large dbs)
         return $statement->fetchAll(PDO::FETCH_CLASS);
         }
-
-
 }

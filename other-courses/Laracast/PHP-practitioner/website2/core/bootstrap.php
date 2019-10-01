@@ -1,15 +1,20 @@
 <?php
-$config = require 'config.php';
-require 'database/Connection.php';
-require 'database/QueryBuilder.php';
 
-//$pdo = Connection::make();
+$app = [];
+
+$app['config'] = require 'config.php';
+
+require 'core/Router.php';
+require 'core/Request.php';
+require 'core/database/Connection.php';
+require 'core/database/QueryBuilder.php';
+
 
 // Build up a Querybuilder
-return new QueryBuilder(
+$app['database'] = new QueryBuilder(
 
     // returns the pdo to create the QueryBuilder
-    Connection::make($config['database'])
+    Connection::make($app['config']['database'])
     
 );
 
